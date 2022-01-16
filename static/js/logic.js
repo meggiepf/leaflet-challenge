@@ -123,14 +123,14 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       }
 
       // Update the station count.
-      earthquakeCount[stationStatusCode]++;
+      earthquakeCount[earthquakeCode]++;
       // Create a new marker with the appropriate icon and coordinates.
-      var newMarker = L.marker([station.lat, station.lon], {
-        icon: icons[stationStatusCode]
+      var newMarker = L.marker([earthquakeGeometry.type.coordinates[0], earthquakeGeometry.type.coordinates[0]], {
+        icon: icons[earthquakeCode]
       });
 
       // Add the new marker to the appropriate layer.
-      newMarker.addTo(layers[stationStatusCode]);
+      newMarker.addTo(layers[earthquakeCode]);
 
       // Bind a popup to the marker that will  display on being clicked. This will be rendered as HTML.
       newMarker.bindPopup(station.name + "<br> Capacity: " + station.capacity + "<br>" + station.num_bikes_available + " Bikes Available");
